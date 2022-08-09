@@ -25,6 +25,8 @@ def eval_metrics(actual, pred):
 
 
 if __name__ == "__main__":
+    mlflow.set_tracking_uri('http://localhost:5000') #ip 172.23.120.219
+    mlflow.set_experiment('case-study-one')
     warnings.filterwarnings("ignore")
     np.random.seed(40)
 
@@ -57,8 +59,7 @@ if __name__ == "__main__":
         print("  MAE: %s" % mae)
         print("  R2: %s" % r2)
         
-        mlflow.set_tracking_uri('http://localhost:5000') #ip 172.23.120.219
-        mlflow.set_experiment('case-study-one')
+
         mlflow.log_param("alpha", alpha)
         mlflow.log_param("l1_ratio", l1_ratio)
         mlflow.log_metric("rmse", rmse)
